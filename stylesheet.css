@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 440px;
+  height: 400px;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.picture {
+  width: 440px;
+  height: 400px;
+  border-radius: 10px;
+
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 1s;
+}
+
+.picture:hover {
+  transform: scale(1.15);
+}
+
+
