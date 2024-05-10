@@ -9,22 +9,65 @@
 
 <body>
   <h1 class="title">今日の食事を共有しよう！</h1>
+  <!-- スライドの外枠 -->
+  <div class="slide-wrapper">
+    <!-- スライド0 -->
+    <div class="slide0" id="slide0">
+      <div>
+        <img src="./picture/001.jpg"></img>
+      </div>
+      <div>
+        <img src="./picture/002.jpg"></img>
+      </div>
+      <div>
+        <img src="./picture/003.jpg"></img>
+      </div>
+    </div>
+
+    <!-- スライド1 -->
+    <div class="slide1" id="slide1">
+      <div>
+        <img src="./picture/001.jpg"></img>
+      </div>
+      <div>
+        <img src="./picture/002.jpg"></img>
+      </div>
+      <div>
+        <img src="./picture/003.jpg"></img>
+      </div>
+    </div>
+
+    <!-- 左右のボタン -->
+    <span id="prev" class="prev"></span>
+    <span id="next" class="next"></span>
+    <!-- インジケーター -->
+    <ul class="indicator" id="indicator">
+      <li class="list"></li>
+      <li class="list"></li>
+      <li class="list"></li>
+    </ul>
+  </div>
+
+
+  <!-- ミール写真一覧表示 -->
   <div class="container">
     <div class="card">
-      <img class="picture" src="./picture/001.jpg"></img>
+      <img src="./picture/001.jpg"></img>
     </div>
     <div class="card">
-      <img class="picture" src="./picture/002.jpg"></img>
+      <img src="./picture/002.jpg"></img>
     </div>
     <div class="card">
-      <img class="picture" src="./picture/003.jpg"></img>
+      <img src="./picture/003.jpg"></img>
     </div>
     <div class="card">
-      <img class="picture" src="./picture/004.jpg"></img>
+      <img src="./picture/004.jpg"></img>
     </div>
     <div class="card">
-      <img class="picture" src="./picture/005.jpg"></img>
+      <img src="./picture/005.jpg"></img>
     </div>
+
+    <script src="./js/slide.js"></script>
 </body>
 
 </html>
