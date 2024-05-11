@@ -27,7 +27,7 @@ function prevClick() {
   slide0.classList.remove(`slide0${count % (totalSlides * 2) + 1}`);
   slide1.classList.remove(`slide1${count % (totalSlides * 2) + 1}`);
   count--;
-  if (count < 0) count = totalSlides - 1;
+  if (count < 0) count = totalSlides * 2 - 1;
   slide0.classList.add(`slide0${count % (totalSlides * 2) + 1}`);
   slide1.classList.add(`slide1${count % (totalSlides * 2) + 1}`);
   updateListBackground();
@@ -50,17 +50,7 @@ prev.addEventListener('click', () => {
   prevClick();
   resetAutoPlayInterval();
 });
-indicator.addEventListener('click', (event) => {
-  if (event.target.classList.contains('list')) {
-    const index = Array.from(lists).indexOf(event.target);
-    slide0.classList.remove(`slide0${count % (totalSlides * 2) + 1}`);
-    slide1.classList.remove(`slide1${count % (totalSlides * 2) + 1}`);
-    count = index;
-    slide0.classList.add(`slide0${count % (totalSlides * 2 )+ 1}`);
-    slide1.classList.add(`slide1${count % (totalSlides * 2 )+ 1}`);
-    updateListBackground();
-    resetAutoPlayInterval();
-  }
-});
+
+
 
 startAutoPlay();

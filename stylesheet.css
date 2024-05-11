@@ -1,24 +1,28 @@
+/* 写真一覧表示 */
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  .card {
-    width: 440px;
-    height: 400px;
-    margin: 10px;
-    border-radius: 10px;
-    overflow: hidden;
+.card {
+  width: 440px;
+  height: 400px;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    
-      transform: scale(1);
-      transform-origin: center;
-      transition: transform 1s;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 1s;
   }
 }
 
@@ -28,16 +32,23 @@
 
 
 /* スライド */
+ul {
+  padding: 0;
+}
+
 li {
   list-style: none;
 }
 
-/* スライドの外枠 */
+/* スライドを表示する枠 */
 .slide-wrapper {
-  width: 100%;
+  max-width: 1200px;
   height: 500px;
   position: relative;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
 
   img {
     width: 600px;
@@ -46,7 +57,7 @@ li {
   }
 }
 
-/*スライド0,1全体 */
+/*スライド0,1の設定 */
 .slide0, .slide1 { 
   width: calc(600px * 3);
   height: 100%;
@@ -55,58 +66,63 @@ li {
   transition: all 0.3s;
 }
 
+/* スライド1の位置はスライド0の右端に設定 */
 .slide1 {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 1800px; 
 }
 
-/* スライド0をスライドさせるためのクラス */
+/* スライド0を移動させるクラス */
 .slide01 {
-  transform: translateX(-33.33%);
-}
-.slide02 {
-  transform: translateX(-66.66%);
-}
-.slide03 {
-  transform: translateX(-100%);
-} /* この処理終了後100%に移動しときたい */
-.slide04 {
-  transform: translateX(66.66%);
-}
-.slide05 {
-  transform: translateX(33.33%);
-}
-.slide06 {
-  transform: translateX(0%);
-}
-
-/* スライド1をスライドさせるためのクラス */
-.slide11 {
-  transform: translateX(66.66%);
-}
-.slide12 {
-  transform: translateX(33.33%);
-}
-.slide13 {
   transform: translateX(0);
 }
-.slide14 {
+.slide02 {
   transform: translateX(-33.33%);
 }
-.slide15 {
+.slide03 {
+  transform: translateX(-66.66%);
+} 
+.slide04 {
+  visibility: hidden;
+  transform: translateX(-100%);
+}
+.slide05 {
+  transform: translateX(66.66%);
+  visibility: hidden;
+}
+.slide06 {
+  transform: translateX(33.33%);
+}
+
+/* スライド1を移動させるクラス */
+.slide11 {
+  visibility: hidden;
+  transform: translateX(-200%);
+}
+.slide12 {
+  transform: translateX(-33.33%);
+  visibility: hidden;
+}
+.slide13 {
   transform: translateX(-66.66%);
 }
-.slide16 {
+.slide14 {
   transform: translateX(-100%);
-}/* この処理終了後、+100%に移動したい*/
+}
+.slide15 {
+  transform: translateX(-133.33%);
+}
+.slide16 {
+  transform: translateX(-166.66%);
+}
 
 
 /* 左右のボタン */
 .next {
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   right: 10px;
   bottom: 50%;
   z-index: 10;
@@ -117,10 +133,17 @@ li {
   transform: rotate(45deg) translateY(50%);
 }
 
+.next:hover {
+  /* マウスカーソルが乗ったときのスタイル */
+  width: 25px;
+  height: 25px;
+  right: 7px; /* 右側に移動して大きくする */
+}
+
 .prev {
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   left: 25px;
   bottom: 50%;
   z-index: 10;
@@ -129,6 +152,13 @@ li {
   border-right: solid 3px #000;
   -webkit-transform: rotate(-135deg) translateY(-50%);
   transform: rotate(-135deg) translateY(-50%);
+}
+
+.prev:hover {
+  /* マウスカーソルが乗ったときのスタイル */
+  width: 25px;
+  height: 25px;
+  left: 26px; /* 右側に移動して大きくする */
 }
 
 /* インジケーター */
@@ -150,7 +180,7 @@ li {
   list-style: none;
   background-color: #fff;
   border: 2px #000 solid;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .indicator li:first-of-type {
