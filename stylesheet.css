@@ -1,3 +1,18 @@
+body {
+  font-family: "メイリオ" ;
+}
+
+h1 {
+  padding-left: 1rem;
+}
+
+h2 {
+  color:darkgreen;
+  border-bottom: 1px solid darkgreen;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 /* 写真一覧表示 */
 .container {
   display: flex;
@@ -14,6 +29,7 @@
   margin: 10px;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0px 0px 15px 5px #777777;
 
   img {
     width: 100%;
@@ -42,12 +58,17 @@ li {
 
 /* スライドを表示する枠 */
 .slide-wrapper {
+  justify-content: center;
+  display: flex;
+}
+
+.slide-window {
   max-width: 1200px;
   height: 500px;
   position: relative;
   overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 2rem;
+  margin-right: 2rem;
   margin-bottom: 10px;
 
   img {
@@ -164,10 +185,9 @@ li {
 /* インジケーター */
 .indicator {
   width: 100%;
-  position: absolute;
   bottom: 20px;
   display: flex;
-  column-gap: 18px;
+  column-gap: 25px;
   z-index: 10;
   justify-content: center;
   align-items: center;
