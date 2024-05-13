@@ -9,6 +9,13 @@
 
 <body>
   <h1 class="title">今日の食事を共有しよう！</h1>
+  <!-- 写真投稿ボタン -->
+  <div>
+    <form id="upload" enctype="multipart/form-data">
+      <input type="file" id="inputedPicture" accept="image/jpeg, image/png" required>
+      <button>投稿する</button>
+    </form>
+  </div>
   <h2>本日の写真</h2>
   <!-- スライドの外枠 -->
   <div class="slide-wrapper">
@@ -72,6 +79,7 @@
     </div>
 
     <script src="./js/slide.js"></script>
+    <script src="./js/imageIO.js"></script>
 </body>
 
 </html>
