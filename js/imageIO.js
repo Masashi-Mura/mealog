@@ -49,13 +49,13 @@ document.getElementById("upload").addEventListener("submit", (e) => {
 //ファイル選択時プレビュー表示
 document.getElementById("inputedPicture").addEventListener("change", function (e) {
     resetPreview();
-    let file = e.target.files[0];
-    if(file == null) {
+    const file = e.target.files[0];
+    if (file == null) {
         return;
     }
 
     let reader = new FileReader();
-    reader.onload = function(event) {
+    reader.onload = function (event) {
         let previewImage = document.getElementById("previewImage");
         previewImage.src = event.target.result;
         previewImage.style.display = "inline-block";
@@ -66,8 +66,54 @@ document.getElementById("inputedPicture").addEventListener("change", function (e
 
 //ファイルのプレビューリセット
 function resetPreview() {
-    // プレビュー領域に含まれる子要素を削除する
-    let previewImage = document.getElementById("previewImage");
+    // style属性を削除
+    const previewImage = document.getElementById("previewImage");
     previewImage.src = "";
     previewImage.removeAttribute("style");
 }
+
+//写真のダウンロードと表示(１枚のみのテスト用)
+document.addEventListener("DOMContentLoaded", function() {
+    const imgElement = document.getElementById('latest-image');
+
+    fetch("https://us-central1-mealog-423100.cloudfunctions.net/GetLatestImage")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('サーバーエラー' + response.statusText);
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const imageUrl = URL.createObjectURL(blob);
+            imgElement.src = imageUrl;
+        })
+        .catch(error => {
+            console.error('写真の読み込みに失敗しました。', error);
+        });
+});
+
+
+//写真のダウンロードと表示
+let iterator = 0; //cloudStorageから取得する写真の開始位置
+document.getElementById("loadPicture").addEventListener("click", function () {
+    const imgContainer = document.getElementById('pictureContainer');
+    const downloadUrl = "https://us-central1-mealog-423100.cloudfunctions.net/DownloadPictures";
+    const numImages = "5"; //１度に取得する写真の枚数設定
+
+    fetch(`${downloadUrl}?iterator=${iterator}&numImages=${numImages}`)
+        .then(response => response.json())
+        .then(data => {
+            //各写真に対し<div class="card"><img src= alt= ></div>の作成
+            data.forEach(image => {
+                const divElement = document.createElement('div'); 
+                divElement.classList.add('card'); 
+                const imgElement = document.createElement('img');
+                imgElement.src = image.url;
+                imgElement.alt = image.name;
+                divElement.appendChild(imgElement); 
+                imgContainer.appendChild(divElement); 
+            });
+            iterator += numImages; //次の写真取得開始位置を設定
+        })
+        .catch(error => console.error('Error:', error));
+});
