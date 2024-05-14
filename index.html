@@ -13,9 +13,16 @@
   <div>
     <form id="upload" enctype="multipart/form-data">
       <input type="file" id="inputedPicture" accept="image/jpeg, image/png" required>
-      <button>投稿する</button>
+      <img id="previewImage" src=""></img>
+      <button id="indicator">投稿する</button>
     </form>
   </div>
+
+  <!-- アップロード中画面 テスト-->
+  <div class="loading hide">
+    <span class="circle"></span>
+  </div>
+
   <h2>本日の写真</h2>
   <!-- スライドの外枠 -->
   <div class="slide-wrapper">
