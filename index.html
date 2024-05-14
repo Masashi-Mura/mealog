@@ -23,7 +23,8 @@
     <span class="circle"></span>
   </div>
 
-  <h2>本日の写真</h2>
+
+  <h2>注目されている写真</h2>
   <!-- スライドの外枠 -->
   <div class="slide-wrapper">
     <div class="slide-window">
@@ -66,27 +67,14 @@
     <li class="list"></li>
   </ul>
 
-  <!-- ミール写真一覧表示 -->
-  <h2>一覧</h2>
-  <div class="container">
-    <div class="card">
-      <img src="./picture/001.jpg"></img>
-    </div>
-    <div class="card">
-      <img src="./picture/002.jpg"></img>
-    </div>
-    <div class="card">
-      <img src="./picture/003.jpg"></img>
-    </div>
-    <div class="card">
-      <img src="./picture/004.jpg"></img>
-    </div>
-    <div class="card">
-      <img src="./picture/005.jpg"></img>
-    </div>
+  <h2>投稿された写真一覧</h2>
+  <div class="container" id="pictureContainer"></div>
+  <button id="loadPicture">写真を読み込む</button>
 
-    <script src="./js/slide.js"></script>
-    <script src="./js/imageIO.js"></script>
+  <!-- ミール写真一覧表示 -->
+
+  <script src="./js/slide.js"></script>
+  <script src="./js/imageIO.js"></script>
 </body>
 
 </html>
