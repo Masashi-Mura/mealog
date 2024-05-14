@@ -33,6 +33,7 @@ document.getElementById("upload").addEventListener("submit", (e) => {
             }
             alert('投稿完了しました。');
             document.getElementById("inputedPicture").value = "";
+            resetPreview();
         })
         .catch(error => {
             console.error('Error:', error);
